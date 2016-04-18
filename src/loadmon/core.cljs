@@ -1,19 +1,20 @@
 (ns loadmon.core
-  (:require [loadmon.reader.gpx.parser :refer [parse-file]]
+  (:require [loadmon.reader.gpx.parser :refer [parse-gpx]]
             [loadmon.calc.tss :refer [r-tss]]))
 
-(def ^:private load-fns {:gpx parse-file})
-(def ^:private norm-fns {:rtss r-tss})
+(def ^:private parse-fns {:gpx parse-gpx})
+(def ^:private norm-fns  {:rtss r-tss})
 
+;; (tss :gpx stream :rtss ftp)
 (defn tss
   "Parses a fitness stream returning the TSS of a workout. Currently, in-format
   must be :gpx and strategy must be :rtss."
-  [in-fmt strategy uri]
-  (let [load-fn (or (get load-fns in-fmt)
-                    (throw (js/Error. (str "Invalid input format: "
-                                           (name in-fmt)))))
-        norm-fn (or (get norm-fns strategy)
-                    (throw (js/Error. (str "Invalid TSS strategy: " strategy))))]
-    (load-fn uri)))
+  [format data strategy ftp]
+  (let [parser (or (get parse-fns format)
+                   (throw (js/Error. (str "Invalid input format: "
+                                          (name format)))))
+        tss-fn (or (get norm-fns strategy)
+                   (throw (js/Error. (str "Invalid strategy: "
+                                          (name strategy)))))]
 
-;; (tss :gpx stream :rtss)
+    (parser data tss-fn ftp)))
