@@ -8,7 +8,7 @@
             [cljs-time.coerce :refer [to-long]]
             [loadmon.calc.distance :refer [distance]]
             [loadmon.calc.common :refer [pace]]
-            [loadmon.calc.normalized-graded-pace :refer [calc-gap]]))
+            [loadmon.calc.ngp :refer [calc-ngp]]))
 
 (def ^:private fs (nodejs/require "fs"))
 
@@ -32,7 +32,7 @@
         elapsed  (if last? (- (get-time curr) (get-time last)) 0)
         lat-lon  (:attributes curr)
         dist     (if last? (distance (:attributes last) lat-lon) 0)
-        interval (calc-gap
+        interval (calc-ngp
                    last
                    curr
                    (merge

@@ -1,4 +1,4 @@
-(ns loadmon.calc.normalized-graded-pace
+(ns loadmon.calc.ngp
   (:require [loadmon.calc.common :refer [atan to-deg]]
             [tubax.helpers :as th]))
 
@@ -18,13 +18,13 @@
 
 (defn- incline-pace [pace grade]
   (let [coef 0.033]
-    (/ pace (+ 1 (* coef grade))))
+    (/ pace (+ 1 (* coef grade)))))
 
-(defn calc-gap
+(defn calc-ngp
   "Calculate the Normalized Graded Pace of two intervals."
   [last curr interval]
   (let [s-ele (get-ele last)
         e-ele (get-ele curr)
         p (:pace interval)
         g (grade s-ele e-ele (:dist interval))]
-    (assoc interval :gap (if (> g 0) (incline-pace p g) (decline-pace p g)))))
+    (assoc interval :ngp (if (> g 0) (incline-pace p g) (decline-pace p g)))))
