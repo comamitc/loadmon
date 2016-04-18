@@ -6,15 +6,16 @@
 
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [org.clojure/clojurescript "1.7.170"]
-                 [org.clojure/core.async "0.2.374"]]
+                 [org.clojure/core.async "0.2.374"]
+                 [funcool/tubax "0.2.0"]
+                 [com.andrewmcveigh/cljs-time "0.4.0"]]
 
   :plugins [[lein-cljsbuild "1.1.1"]
             [lein-figwheel "0.5.0-2"]
             [lein-npm "0.6.2"]]
 
   :npm {:dependencies [[source-map-support "0.4.0"]
-                       [ws "0.8.1"]
-                       [gpx-parse "0.10.4"]]}
+                       [ws "0.8.1"]]}
 
   :source-paths ["src"]
 
