@@ -1,7 +1,7 @@
-(ns loadmon.parse
-  (:require [loadmon.reader.gpx :refer [load-file]]))
+(ns loadmon.core
+  (:require [loadmon.reader.gpx.parser :refer [parse-file]]))
 
-(def ^:private load-fns {:gpx load-file})
+(def ^:private load-fns {:gpx parse-file})
 (def ^:private norm-fns {:rtss #()})
 
 (defn parse
@@ -11,5 +11,4 @@
   (let [load-fn (or (get load-fns in-fmt)
                     (throw (js/Error. (str "Invalid input format: "
                                            (name in-fmt)))))]
-    ; returns a channel
     (load-fn uri)))
