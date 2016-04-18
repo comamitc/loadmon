@@ -26,7 +26,7 @@
                         :source-paths ["src" "test"]
                         :notify-command ["node" "target/dev/loadmon.js"]
                         :compiler {
-                                   :main loadmon.core
+                                   :main loadmon.test.core
                                    :output-to "target/dev/loadmon.js"
                                    :output-dir "target/dev"
                                    :target :nodejs
