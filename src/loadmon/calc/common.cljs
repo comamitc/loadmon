@@ -29,3 +29,7 @@
 
 (defn km->mi [n]
   (* n 0.621371))
+
+(defn pace [km ms]
+  (let [min (/ ms 1000 60)]
+    (/ min km)))
