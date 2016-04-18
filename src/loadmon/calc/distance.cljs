@@ -1,26 +1,7 @@
 (ns loadmon.calc.distance
-  (:require [goog.math :as math]))
+  (:require [loadmon.calc.common :refer [to-rad sin cos asin sqrt]]))
 
 (def ^:private radius-of-earth 6378.1)
-(def ^:private js-math js/Math)
-
-(defn- sin [n]
-  (.sin js-math n))
-
-(defn- cos [n]
-  (.cos js-math n))
-
-(defn- sqrt [n]
-  (.sqrt js-math n))
-
-(defn- asin [n]
-  (.asin js-math n))
-
-(defn- atan2 [n]
-  (.atan2 js-math n))
-
-(defn- to-rad [n]
-  (math/toRadians n))
 
 (defn distance [start end]
   "return the distance of two points in kilometers"
