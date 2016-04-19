@@ -15,8 +15,8 @@
 (defn asin [n]
   (.asin js-math n))
 
-(defn atan2 [n]
-  (.atan2 js-math n))
+(defn atan2 [a b]
+  (.atan2 js-math a b))
 
 (defn to-rad [n]
   (math/toRadians n))
@@ -29,6 +29,9 @@
 
 (defn km->mi [n]
   (* n 0.621371))
+
+(defn sq [n]
+  (.pow js-math n 2))
 
 (defn pace [km ms]
   (let [min (/ ms 1000 60)]
