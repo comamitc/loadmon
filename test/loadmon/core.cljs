@@ -9,7 +9,7 @@
 (defn- callback
   [err data]
   (when (some? err) (throw (js/Error. err)))
-  (let [results (tss :gpx (str data) :rtss 4.97)]
+  (let [results (tss :gpx (str data) :rtss 5.19)]
     (print results)))
 
 (defn -test []
