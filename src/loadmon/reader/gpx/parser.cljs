@@ -23,7 +23,8 @@
         ttl-dist (:ttl-dist acc)
         last     (:last acc)
         last?    (some? last)
-        elapsed  (if last? (- (get-time curr) (get-time last)) 0)
+        ctime    (get-time curr)
+        elapsed  (if last? (- ctime (get-time last)) 0)
         lat-lon  (:attributes curr)
         dist     (if last? (distance (:attributes last) lat-lon) 0)
         interval (calc-ngp
@@ -33,7 +34,7 @@
                      lat-lon
                      {:dist    dist,
                       :elapsed elapsed,
-                      :time    (get-time curr),
+                      :time    ctime,
                       :pace    (pace dist elapsed)}))
         new-acc (assoc
                   acc
