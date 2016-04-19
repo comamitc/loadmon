@@ -1,5 +1,5 @@
 (ns loadmon.calc.distance
-  (:require [loadmon.calc.common :refer [to-rad sin cos asin sqrt]]))
+  (:require [loadmon.calc.common :refer [to-rad sin cos atan2 sqrt]]))
 
 (def ^:private radius-of-earth 6378.1)
 
@@ -16,4 +16,4 @@
               (sin (/ dlon 2))
               (cos (to-rad lat1))
               (cos (to-rad lat2))))]
-    (* radius-of-earth 2 (asin (sqrt a)))))
+    (* radius-of-earth 2 (atan2 (sqrt a) (sqrt (- 1 a))))))
