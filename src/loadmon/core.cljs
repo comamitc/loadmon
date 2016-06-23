@@ -1,8 +1,8 @@
 (ns loadmon.core
-  (:require [loadmon.reader.gpx.parser :refer [parse-gpx]]
+  (:require [loadmon.reader.gpx.parser :refer [parse]]
             [loadmon.calc.tss :refer [r-tss]]))
 
-(def ^:private parse-fns {:gpx parse-gpx})
+(def ^:private parse-fns {:gpx parse})
 (def ^:private norm-fns  {:rtss r-tss})
 
 ;; (tss :gpx stream :rtss ftp)

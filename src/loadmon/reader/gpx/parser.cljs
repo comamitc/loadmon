@@ -45,7 +45,6 @@
       (update-in new-acc [:intervals] conj interval)
       new-acc)))
 
-
 (defn- make-tracks [data]
   (-> data
       (th/find-first {:tag :trkseg})
@@ -53,7 +52,7 @@
            (reduce reduce-intervals {}))
       (dissoc :last)))
 
-(defn parse-gpx
+(defn parse
   "Given a .gpx filename, open and parse the file into a usable datastructure."
   [data tss-fn ftp]
   (let [tracks (make-tracks (xml->clj data))]
