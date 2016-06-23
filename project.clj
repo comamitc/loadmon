@@ -15,7 +15,8 @@
             [lein-npm "0.6.2"]]
 
   :npm {:dependencies [[source-map-support "0.4.0"]
-                       [ws "0.8.1"]]}
+                       [ws "0.8.1"]
+                       [strava-v3 "1.12.0"]]}
 
   :source-paths ["src"]
 
